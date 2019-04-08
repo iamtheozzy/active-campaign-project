@@ -1,4 +1,5 @@
 .main {
+  display: block;
   height: 300px;
   width: 420px;
   background-color: #FFFFFF;
@@ -10,14 +11,101 @@
     font-family: 'Poppins', sans-serif; 
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 16px;
   }
 
   p {
     font-family: 'IBM Plex Sans', sans-serif;
+    margin-bottom: 47px;
+
+    span {
+      font-weight: 600;
+    }
   }
 }
 
+.giveButton {
+  position: absolute;
+  display: inline-block;
+  height: 54px;
+  width: 116px;
+  border-radius: 0 6px 6px 0;
+  background: #19CCA3;
+  font-family: Poppins-Bold;
+  font-size: 18px;
+  color: #FFFFFF;
+}
 
+.inputDiv {
+  position: relative;
+  display: inline;
+  left: -10px;
+}
+
+input[type=text] {
+  height: 54px;
+  width: 244px;
+  background: #FFFFFF;
+  border: 1px solid #CED3E0;
+  box-shadow: inset 0 0 3px 1px rgba(0,0,0,0.15);
+  border-radius: 6px 0 0 6px;
+  padding: 15px 15px 15px 23px;
+  font-size: 18px;
+  font-family: Poppins-Bold;
+}
+
+.dollarSign {
+  font-family: IBMPlexSans;
+  font-size: 20px;
+  color: #9298AD;
+  text-align: left;
+  position: relative;
+  left: 20px;
+}
+
+.popOverStyles {
+  background: #E3EBFC;
+  border-radius: 6px;
+  height: 42px;
+  width: 420px;
+}
+
+.popText {
+  font-family: 'IBM Plex Sans', sans-serif; 
+  color: #356AE6;
+  font-size: 16px;
+}
+
+.tooltip {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #E3EBFC;
+  border-radius: 6px; 
+  width: 420px;
+  height: 42px;
+  color: #356AE6;
+  font-family: 'IBM Plex Sans', sans-serif;
+  padding-left: 15px;
+  margin-bottom: 18px;
+
+  &::after {
+    content: '';
+    position: relative;
+    top: 24px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 10px solid #E3EBFC;
+  }
+
+  span {
+    font-family: 'IBM Plex Sans SemiBold', sans-serif;
+    margin-right: 4px;
+  }
+
+}
 
 
 
