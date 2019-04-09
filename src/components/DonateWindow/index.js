@@ -10,7 +10,8 @@ class DonateWindow extends Component {
     goal: 5000,
     currentBalance: 0,
     donors: 0,
-    wrongInputType: false
+    wrongInputType: false,
+    success: false
   }
 
   // updates form input
@@ -41,10 +42,15 @@ class DonateWindow extends Component {
     this.updateGoal();
   }
 
+  componentDidMount() {
+    console.log(this.state.wrongInputType)
+  }
+
 
   render() {
     
     const { goal, currentBalance, wrongInputType } = this.state;
+
 
     return (
       <div>
@@ -52,10 +58,16 @@ class DonateWindow extends Component {
         <div className={classNames(styles.main)}>
           <h1>Only four days left to fund this project</h1>
           <p>Join the <span>{this.state.donors}</span> other donors who have already supported this project.</p>
-
           <div className={styles.inputDiv}>
             <span className={classNames(styles.dollarSign)}>$</span>
-            <input type="text" className={classNames()} onChange={this.updateInput} value={this.state.input} />
+            <input type="text" 
+            className={
+              classNames(
+              styles.inputStyles, 
+              wrongInputType ? styles.notValid : null,
+              currentBalance >= goal ? styles.succesful : null
+              )} 
+              onChange={this.updateInput} value={this.state.input} />
             <button className={classNames(styles.giveButton)} onClick={this.submit}>Give Now</button>
           </div>
         </div>
