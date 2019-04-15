@@ -6,12 +6,13 @@ import styles from './donate.module.scss';
 class DonateWindow extends Component {
 
   state = {
-    input: "5",
+    input: "",
     goal: 5000,
     currentBalance: 0,
     donors: 0,
     wrongInputType: false,
-    success: false
+    success: false,
+    totallyFunded: false
   }
 
   // updates form input
@@ -23,27 +24,38 @@ class DonateWindow extends Component {
 
   // check if input is a number && over $5
   inputValidation = () => {
-    console.log("Create this validation");
+    if( this.state.input < 5 ) {
+      alert("input needs to be greater than 5");
+      this.setState({
+        input: ""
+      })
+    } else if ( isNaN(this.state.input) || this.state.input === "") {
+      alert("input must be a number!");
+    } else {
+      this.updateGoal();
+    }
   }
 
   // Updates current goal, number of donors, and resets input to 0
   updateGoal = () => {
+    if( this.state.currentBalance + parseInt(this.state.input) >= this.state.goal ) {
+      alert("HOORAAYY! WE HIT OUR GOAL!!");
+    } 
     this.setState({
-      goal: this.state.goal - parseInt(this.state.input),
+      currentBalance: this.state.currentBalance + parseInt(this.state.input),
       donors: this.state.donors + 1,
-      input: "0"
+      input: ""
     })
+    console.log("updated form");
   }
 
   // Initiates input validation, updates goals
   submit = () => {
-    console.log("submitted");
-    // Create Validation for inputs
-    this.updateGoal();
+    this.inputValidation();
   }
 
-  componentDidMount() {
-    console.log(this.state.wrongInputType)
+  componentDidUpdate() {
+    console.log(this.state);
   }
 
 
